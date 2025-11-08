@@ -1,8 +1,164 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>DROPHACK — Accesso Protetto</title>
+  <style>
+    /* Base */
+    body { margin: 0; font-family: 'Segoe UI', sans-serif; background-color: #0a0a0f; color: #e0e0e0; }
+    .container { max-width: 1200px; margin: auto; padding: 20px; }
 
-python3 -m http.server 8080
-cd ~/drophack
-ls
+    /* Login */
+    #login { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; text-align: center; }
+    #content { display: none; } /* Importante: nascondi tutto finché non passa il login */
+    .login-box input { padding: 10px; margin: 10px; border: 2px solid #8a2be2; border-radius: 6px; background: #111; color: #fff; box-shadow: 0 0 10px #8a2be2; }
+    .login-box button { padding: 10px 20px; background: #00ff9f; border: 2px solid #8a2be2; border-radius: 6px; cursor: pointer; font-weight: bold; box-shadow: 0 0 10px #8a2be2; }
+    .login-box button:hover { background: #8a2be2; color: #fff; }
 
+    /* Navbar */
+    .nav { display: flex; justify-content: space-between; padding: 15px; background: #111; border-bottom: 2px solid #8a2be2; }
+    .nav .brand { font-weight: bold; color: #8a2be2; font-family: 'Orbitron', sans-serif; text-shadow: 0 0 10px #8a2be2; }
+    .nav .links a { color: #00bfff; text-decoration: none; margin-left: 15px; font-weight: bold; }
+    .nav .links a:hover { color: #00ff9f; }
 
+    /* Hero e titoli con gradiente verde→blu */
+    .hero { text-align: center; padding: 80px 20px; background: linear-gradient(135deg, #111, #1a0033); }
+    .hero .title, .section .title {
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(90deg, #00ff9f, #00bfff);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 12px #8a2be2;
+    }
+    .hero .title { font-size: 3em; }
+    .section .title { font-size: 2em; margin-bottom: 20px; }
 
-exit
+    /* Griglie e card */
+    .section { margin: 60px 0; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+    .card { background: #1a1a2e; padding: 20px; border: 2px solid #8a2be2; border-radius: 8px; box-shadow: 0 0 12px #8a2be2; }
+    .card h3 { color: #00bfff; }
+
+    /* Bottoni */
+    .btn { display: inline-block; padding: 10px 20px; background: #00ff9f; color: #000; border-radius: 4px; text-decoration: none; cursor: pointer; font-weight: bold; border: 2px solid #8a2be2; box-shadow: 0 0 10px #8a2be2; }
+    .btn:hover { background: #8a2be2; color: #fff; box-shadow: 0 0 15px #8a2be2; }
+
+    /* Footer */
+    .footer { text-align: center; padding: 20px; background: #111; border-top: 2px solid #8a2be2; color: #00bfff; }
+  </style>
+</head>
+<body>
+  <!-- Schermata di login -->
+  <div id="login" class="login-box">
+    <h1>Accesso Protetto</h1>
+    <p>Inserisci la password per entrare</p>
+    <input type="password" id="pwd" placeholder="Password">
+    <button id="loginBtn">Entra</button>
+  </div>
+
+  <!-- Contenuto protetto -->
+  <div id="content">
+    <div class="container">
+      <nav class="nav">
+        <div class="brand">DROPHACK</div>
+        <div class="links">
+          <a href="#prodotti">Prodotti</a>
+          <a href="#servizi">Servizi</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contatti">Contatti</a>
+        </div>
+      </nav>
+
+      <section class="hero">
+        <h1 class="title">DROPHACK</h1>
+        <p class="subtitle">Gadget futuristici e servizi tech per un mondo digitale.</p>
+        <div class="cta">
+          <a class="btn" href="#prodotti">Vai ai Prodotti</a>
+          <a class="btn" href="#servizi">Scopri i Servizi</a>
+        </div>
+      </section>
+
+      <section id="prodotti" class="section">
+        <h2 class="title">Catalogo Prodotti</h2>
+        <div class="grid">
+          <div class="card"><h3>Smart Organizer</h3><p>Gestione rapida e funzionale.</p></div>
+          <div class="card"><h3>Neon Charger</h3><p>Ricarica veloce e futuristica.</p></div>
+          <div class="card"><h3>Cyber Desk Lamp</h3><p>Illuminazione moderna e smart.</p></div>
+        </div>
+      </section>
+
+      <section id="servizi" class="section">
+        <h2 class="title">Soluzioni Tech su Misura</h2>
+        <div class="grid">
+          <div class="card"><h3>Consulenza Tech</h3><p>Supporto strategico e operativo.</p></div>
+          <div class="card"><h3>Automazione</h3><p>Processi digitali su richiesta.</p></div>
+          <div class="card"><h3>Infrastrutture Web</h3><p>Costruzione chiara e scalabile.</p></div>
+        </div>
+      </section>
+
+      <section id="faq" class="section">
+        <h2 class="title">Domande frequenti</h2>
+        <div class="card"><p><b>Come acquistare?</b><br>Puoi sfogliare il catalogo e contattarci direttamente.</p></div>
+        <div class="card"><p><b>I servizi sono personalizzabili?</b><br>Sì, ogni soluzione è su misura.</p></div>
+      </section>
+
+      <section id="contatti" class="section">
+        <h2 class="title">Scrivici</h2>
+        <form>
+          <input type="email" placeholder="La tua email">
+          <textarea rows="4" placeholder="Il tuo messaggio"></textarea>
+          <button class="btn" type="button">Invia</button>
+        </form>
+      </section>
+
+      <footer class="footer">
+        <p>© 2025 DROPHACK — Tutti i diritti riservati</p>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Script: login e piccole funzionalità -->
+  <script>
+    // Configura la password qui
+    const PASSWORD = "cyberpunk-2077";
+
+    // Inizializza: assicurati che il contenuto parta nascosto
+    document.addEventListener("DOMContentLoaded", () => {
+      const content = document.getElementById("content");
+      const login = document.getElementById("login");
+      content.style.display = "none";
+      login.style.display = "flex";
+
+      // Click sul bottone di login
+      document.getElementById("loginBtn").addEventListener("click", checkPwd);
+
+      // Permetti Enter dalla input
+      document.getElementById("pwd").addEventListener("keydown", (e) => {
+        if (e.key === "Enter") checkPwd();
+      });
+
+      // Scroll fluido per i link interni (funziona solo dopo l'accesso)
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+        });
+      });
+    });
+
+    function checkPwd() {
+      const p = document.getElementById('pwd').value;
+      const login = document.getElementById('login');
+      const content = document.getElementById('content');
+
+      if (p === PASSWORD) {
+        login.style.display = "none";
+        content.style.display = "block";
+      } else {
+        alert("Password errata!");
+      }
+    }
+  </script>
+</body>
+</html>
+
